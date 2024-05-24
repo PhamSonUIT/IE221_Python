@@ -1,0 +1,42 @@
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+header {
+  background-color: #4caf50;
+  color: white;
+  text-align: center;
+  padding: 1em 0;
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background-color: #f8f8f8;
+  padding: 1em;
+  position: fixed;
+  height: 100%;
+}
+
+.menu button {
+  background-color: #4caf50;
+  color: white;
+  border: none;
+  padding: 1em;
+  margin: 0.5em 0;
+  text-align: left;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.menu button:hover {
+  background-color: #45a049;
+}
+
+main {
+  margin-left: 220px;
+  padding: 1em;
+}
