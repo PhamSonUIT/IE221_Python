@@ -26,19 +26,16 @@
         </tr>
         {% for nv in ds_nv %}
         <tr>
-          
-          <td>{{ma_nv}}</td>
-          <td>{{ho_ten}}</td>
-          <td>{{luong_cb}}</td> 
-          <td>{{so_gio_lam}}</td>
-          <td>{{so_sp}}</td>
-          <td>{{he_so_cv}}</td>
-          <td>{{thuong}}</td>
-          <td>{{luong_ht}}</td>
-          
+          <td>{{ nv.ma_nv }}</td>
+          <td>{{ nv.ho_ten }}</td>
+          <td>{{ nv.luong_cb }}</td> 
+          <td>{{ nv.so_gio_lam }}</td>
+          <td>{{ nv.so_sp }}</td>
+          <td>{{ nv.he_so_cv }}</td>
+          <td>{{ nv.thuong }}</td>
+          <td>{{ nv.luong_ht }}</td>
         </tr>
-        {%endfor%}
-        <!-- Thêm các dòng khác tương tự -->
+        {% endfor %}
       </table>
     </main>
   </body>

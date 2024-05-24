@@ -1,38 +1,68 @@
+<!-- templates/app/them_nhan_vien.html -->
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Thêm Nhân Viên</title>
-    <link rel="stylesheet" href="{%static 'app/css/add_employee.css'%}" />
+    <link rel="stylesheet" href="{% static 'app/css/add_employee.css' %}" />
+    <script>
+      function showFields() {
+        var loai_nv = document.getElementById("loai_nv").value;
+        document.getElementById("so_gio_lam_field").style.display =
+          loai_nv == "van_phong" ? "block" : "none";
+        document.getElementById("so_sp_field").style.display =
+          loai_nv == "san_xuat" ? "block" : "none";
+        document.getElementById("he_so_cv_field").style.display =
+          loai_nv == "quan_ly" ? "block" : "none";
+        document.getElementById("thuong_field").style.display =
+          loai_nv == "quan_ly" ? "block" : "none";
+      }
+      window.onload = showFields;
+    </script>
   </head>
   <body>
     <header>
       <h1>Thêm Nhân Viên</h1>
     </header>
     <main>
-      <form>
+      <form method="post">
+        {% csrf_token %}
         <label for="ma_nv">Mã NV:</label><br />
         <input type="text" id="ma_nv" name="ma_nv" /><br />
         <label for="ho_ten">Họ Tên:</label><br />
         <input type="text" id="ho_ten" name="ho_ten" /><br />
-        <label for="luong_co_ban">Lương Cơ Bản:</label><br />
-        <input type="text" id="luong_co_ban" name="luong_co_ban" /><br />
+        <label for="luong_cb">Lương Cơ Bản:</label><br />
+        <input type="number" id="luong_cb" name="luong_cb" /><br />
         <label for="loai_nv">Loại NV:</label><br />
-        <select id="loai_nv" name="loai_nv">
+        <select id="loai_nv" name="loai_nv" onchange="showFields()">
           <option value="van_phong">Văn Phòng</option>
           <option value="san_xuat">Sản Xuất</option>
-          <option value="quan_ly">Quản Lý</option>
-        </select><br>
-        <label for="so_gio_lam">Số giờ làm </label><br>
-        <input type="text" id="so_gio_lam" name="so_gio_lam" /><br />
-        <label for="so_sp">Số sản phẩm</label><br>
-        <input type="text" id="so_sp" name="so_sp" /><br />
-        <label for="he_so_cv">Hệ số cv</label><br>
-        <input type="text" id="he_so_cv" name="he_so_cv" /><br />
-        <label for="thuong">Thưởng</label><br>
-        <input type="text" id="thuong" name="thuong" /><br />
-        <br /><br />
+          <option value="quan_ly">Quản Lý</option></select
+        ><br />
+        <div id="so_gio_lam_field">
+          <label for="so_gio_lam">Số giờ làm:</label><br />
+          <input
+            type="number"
+            id="so_gio_lam"
+            name="so_gio_lam"
+            value= 0
+          /><br />
+        </div>
+        <div id="so_sp_field">
+          <label for="so_sp">Số sản phẩm:</label><br />
+          <input type="number" id="so_sp" name="so_sp" value= 0 /><br />
+        </div>
+        <div id="he_so_cv_field">
+          <label for="he_so_cv">Hệ số chức vụ:</label><br />
+          <input type="number" id="he_so_cv" name="he_so_cv" value= 0 /><br />
+        </div>
+        <div id="thuong_field">
+          <label for="thuong">Thưởng:</label><br />
+          <input type="number" id="thuong" name="thuong" value= 0 /><br />
+        </div>
+        <br />
         <input type="submit" value="Thêm" />
       </form>
     </main>
