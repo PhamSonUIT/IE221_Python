@@ -23,18 +23,26 @@
           <th>Hệ số chức vụ</th>
           <th>Thưởng</th>
           <th>Lương hàng tháng</th>
+          <th>Hành động</th>
         </tr>
         {% for nv in ds_nv %}
         <tr>
           <td>{{ nv.ma_nv }}</td>
           <td>{{ nv.ho_ten }}</td>
-          <td>{{ nv.luong_cb }}</td> 
+          <td>{{ nv.luong_cb }}</td>
           <td>{{ nv.so_gio_lam }}</td>
           <td>{{ nv.so_sp }}</td>
           <td>{{ nv.he_so_cv }}</td>
           <td>{{ nv.thuong }}</td>
           <td>{{ nv.luong_ht }}</td>
+          <td>
+            <form action="{% url 'xoa_nv' nv.ma_nv %}" method="post">
+              {% csrf_token %}
+              <button type="submit">Xóa</button>
+            </form>
+          </td>
         </tr>
+
         {% endfor %}
       </table>
     </main>

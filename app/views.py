@@ -1,4 +1,4 @@
-from django.shortcuts import render,redirect
+from django.shortcuts import render,redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import NhanVien
 
@@ -41,3 +41,7 @@ def them_nv(request):
         return redirect('hien_thi_nv')
     return render(request, 'app/them_nv.html')
 
+def xoa_nv(request, ma_nv):
+    nhan_vien = get_object_or_404(NhanVien, ma_nv=ma_nv)
+    nhan_vien.delete()
+    return redirect('hien_thi_nv')
