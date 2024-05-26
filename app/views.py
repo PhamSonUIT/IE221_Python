@@ -45,3 +45,31 @@ def xoa_nv(request, ma_nv):
     nhan_vien = get_object_or_404(NhanVien, ma_nv=ma_nv)
     nhan_vien.delete()
     return redirect('hien_thi_nv')
+
+def cap_nhat_nv(request, ma_nv):
+    nhan_vien = get_object_or_404(NhanVien, ma_nv=ma_nv)
+
+    if request.method == 'POST':
+        nhan_vien.ho_ten = request.POST['ho_ten']
+        nhan_vien.luong_cb = request.POST['luong_cb']
+        nhan_vien.loai_nv = request.POST['loai_nv']
+
+        # Cập nhật các trường riêng của từng loại nhân viên nếu có giá trị
+        so_gio_lam = request.POST.get('so_gio_lam')
+        so_sp = request.POST.get('so_sp')
+        he_so_cv = request.POST.get('he_so_cv')
+        thuong = request.POST.get('thuong')
+
+        if so_gio_lam:
+            nhan_vien.so_gio_lam = so_gio_lam
+        if so_sp:
+            nhan_vien.so_sp = so_sp
+        if he_so_cv:
+            nhan_vien.he_so_cv = he_so_cv
+        if thuong:
+            nhan_vien.thuong = thuong
+
+        nhan_vien.save()
+        return redirect('hien_thi_nv')
+
+    return render(request, 'app/cap_nhat.html', {'nhan_vien': nhan_vien})
