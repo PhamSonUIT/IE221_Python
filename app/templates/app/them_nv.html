@@ -23,15 +23,11 @@
   </head>
   <body>
     <nav class="menu">
-      <a href="{% url 'them_nv' %}">
-        Thêm Nhân Viên
-      </a>
-      <a href="{% url 'hien_thi_nv' %}">
-        Xem Danh Sách Nhân Viên
-      </a>
+      <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a>
+      <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a>
+      <a href="{% url 'tim_nv' %}"> Tìm Nhân Viên </a>
     </nav>
     <header>
-    
       <h1>Thêm Nhân Viên</h1>
     </header>
     <main>
@@ -55,20 +51,20 @@
             type="number"
             id="so_gio_lam"
             name="so_gio_lam"
-            value= 0
+            value="0"
           /><br />
         </div>
         <div id="so_sp_field">
           <label for="so_sp">Số sản phẩm:</label><br />
-          <input type="number" id="so_sp" name="so_sp" value= 0 /><br />
+          <input type="number" id="so_sp" name="so_sp" value="0" /><br />
         </div>
         <div id="he_so_cv_field">
           <label for="he_so_cv">Hệ số chức vụ:</label><br />
-          <input type="number" id="he_so_cv" name="he_so_cv" value= 0 /><br />
+          <input type="number" id="he_so_cv" name="he_so_cv" value="0" /><br />
         </div>
         <div id="thuong_field">
           <label for="thuong">Thưởng:</label><br />
-          <input type="number" id="thuong" name="thuong" value= 0 /><br />
+          <input type="number" id="thuong" name="thuong" value="0" /><br />
         </div>
         <br />
         <input type="submit" value="Thêm" />
