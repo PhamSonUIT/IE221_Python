@@ -16,9 +16,18 @@ def hien_thi_nv(request):
     ds_nv = NhanVien.objects.all()
     return render(request, 'app/hien_thi_nv.html', {'ds_nv':ds_nv})
 
-def tim_nv(request, ma_nv):
-    return render(request, 'app/tim_nv.html',{'ma_nv':ma_nv} )
+def tim_nv(request):
+    ma_nv = request.GET.get('ma_nv', '')
+    error = None
+    nhan_vien = None
+    
+    if ma_nv:
+        try:
+            nhan_vien = NhanVien.objects.get(ma_nv=ma_nv)
+        except NhanVien.DoesNotExist:
+            error = "Không tìm thấy nhân viên với mã này."
 
+    return render(request, 'app/tim_nv.html', {'nhan_vien': nhan_vien, 'error': error})
 
 def them_nv(request):
     if request.method == 'POST':

@@ -1,0 +1,76 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tìm Nhân Viên</title>
+    <link rel="stylesheet" href="{% static 'app/css/styles.css' %}" />
+  </head>
+  <body>
+    <header>
+      <h1>Tìm Nhân Viên</h1>
+    </header>
+
+    <main>
+      <nav class="menu">
+        <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a> <br/>
+        <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a><br/>
+        <a href="{% url 'tim_nv' %}"> Tìm Nhân Viên </a><br/>
+      </nav>
+      <form method="get" action="{% url 'tim_nv' %}">
+        <label for="ma_nv">Mã NV:</label><br />
+        <input type="text" id="ma_nv" name="ma_nv" required /><br />
+        <input type="submit" value="Tìm" />
+      </form>
+
+      {% if nhan_vien %}
+      <h2>Thông tin nhân viên</h2>
+      <table>
+        <tr>
+          <th>Mã NV:</th>
+          <td>{{ nhan_vien.ma_nv }}</td>
+        </tr>
+        <tr>
+          <th>Họ Tên:</th>
+          <td>{{ nhan_vien.ho_ten }}</td>
+        </tr>
+        <tr>
+          <th>Lương Cơ Bản:</th>
+          <td>{{ nhan_vien.luong_cb }}</td>
+        </tr>
+        <tr>
+          <th>Loại NV:</th>
+          <td>{{ nhan_vien.loai_nv }}</td>
+        </tr>
+        {% if nhan_vien.loai_nv == "van_phong" %}
+        <tr>
+          <th>Số Giờ Làm:</th>
+          <td>{{ nhan_vien.so_gio_lam }}</td>
+        </tr>
+        {% elif nhan_vien.loai_nv == "san_xuat" %}
+        <tr>
+          <th>Số Sản Phẩm:</th>
+          <td>{{ nhan_vien.so_sp }}</td>
+        </tr>
+        {% elif nhan_vien.loai_nv == "quan_ly" %}
+        <tr>
+          <th>Hệ Số Chức Vụ:</th>
+          <td>{{ nhan_vien.he_so_cv }}</td>
+        </tr>
+        <tr>
+          <th>Thưởng:</th>
+          <td>{{ nhan_vien.thuong }}</td>
+        </tr>
+        {% endif %}
+        <tr>
+          <th>Lương Hiện Tại:</th>
+          <td>{{ nhan_vien.luong_ht }}</td>
+        </tr>
+      </table>
+      {% elif error %}
+      <p>{{ error }}</p>
+      {% endif %}
+    </main>
+  </body>
+</html>
