@@ -12,6 +12,10 @@
     <header>
       <h1>Xem Danh Sách Nhân Viên</h1>
     </header>
+    <nav class="menu">
+      <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a>
+      <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a>
+    </nav>
     <main>
       <table>
         <tr>
@@ -23,7 +27,9 @@
           <th>Hệ số chức vụ</th>
           <th>Thưởng</th>
           <th>Lương hàng tháng</th>
+          {% comment %}
           <th>Hành động</th>
+          {% endcomment %}
         </tr>
         {% for nv in ds_nv %}
         <tr>
@@ -43,6 +49,13 @@
           </td>
           <td>
             <a href="{% url 'cap_nhat_nv' nv.ma_nv %}">Cập Nhật</a>
+          </td>
+
+          <td>
+            <form method="post" action="{% url 'tinh_luong' nv.ma_nv %}">
+              {% csrf_token %}
+              <button type="submit">Tính Lương</button>
+            </form>
           </td>
         </tr>
 

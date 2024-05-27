@@ -6,6 +6,12 @@ from .models import NhanVien
 def home(request):
     return render(request, 'app/home.html')
 
+def tinh_luong(request, ma_nv):
+    nhan_vien = get_object_or_404(NhanVien, ma_nv=ma_nv)
+    nhan_vien.tinh_luong()
+    return redirect('hien_thi_nv')
+
+
 def hien_thi_nv(request):
     ds_nv = NhanVien.objects.all()
     return render(request, 'app/hien_thi_nv.html', {'ds_nv':ds_nv})
@@ -73,3 +79,6 @@ def cap_nhat_nv(request, ma_nv):
         return redirect('hien_thi_nv')
 
     return render(request, 'app/cap_nhat.html', {'nhan_vien': nhan_vien})
+
+
+
