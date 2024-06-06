@@ -1,23 +1,7 @@
-{%load static%}
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Quản Lý Nhân Viên</title>
-    <link rel="stylesheet" href="{%static 'app/css/style.css'%}" />
-  </head>
-  <body>
-    <header>
-      <h1>Quản Lý Nhân Viên</h1>
-    </header>
-    <nav class="menu">
-      <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a>
-      <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a>
-      <a href="{% url 'tim_nv' %}"> Tìm Nhân Viên </a>
-    </nav>
-    <main>
-      <p>Chào mừng bạn đến với hệ thống quản lý nhân viên.</p>
-    </main>
-  </body>
-</html>
+{% extends 'app/base.html' %}
+
+{% block title %}Trang Chủ{% endblock %}
+
+{% block content %}
+<h2>Chào mừng đến với hệ thống quản lý nhân viên</h2>
+{% endblock %}

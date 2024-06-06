@@ -1,4 +1,6 @@
+{% extends 'app/base.html' %}
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -11,13 +13,8 @@
     <header>
       <h1>Tìm Nhân Viên</h1>
     </header>
-
+    {%block content%}
     <main>
-      <nav class="menu">
-        <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a> <br />
-        <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a><br />
-        <a href="{% url 'tim_nv' %}"> Tìm Nhân Viên </a><br />
-      </nav>
       <form method="get" action="{% url 'tim_nv' %}">
         <label for="ma_nv">Mã NV:</label><br />
         <input type="text" id="ma_nv" name="ma_nv" required /><br />
@@ -72,5 +69,6 @@
       <p>{{ error }}</p>
       {% endif %}
     </main>
+    {% endblock %}
   </body>
 </html>

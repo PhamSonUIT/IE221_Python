@@ -1,0 +1,33 @@
+{%extends 'app/base.html'%}
+{%load static%}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Đăng Nhập</title>
+    <link rel="stylesheet" href="{% static 'app/css/add_employee.css' %}">
+</head>
+<body>
+
+    {%block content%}
+    <header>
+        <h1>Đăng Nhập</h1>
+    </header>
+    <main>
+        <form method="post">
+            {% csrf_token %}
+            <label for="username">Username:</label><br>
+            <input type="text" id="username" name="username"><br> <br>
+            <label for="password">Password:</label><br>
+            <input type="password" id="password" name="password"><br><br>
+            {% if error %}
+                <p style="color: red;">{{ error }}</p>
+            {% endif %}
+            <input type="submit" value="Đăng Nhập">
+        </form>
+    </main>
+    {%endblock%}
+    
+</body>
+</html>

@@ -8,6 +8,7 @@ urlpatterns = [
     path('cap_nhat_nv/<int:ma_nv>/', views.cap_nhat_nv, name="cap_nhat_nv"),
     path('tinh_luong/<str:ma_nv>/', views.tinh_luong, name="tinh_luong"),  
     path('tim_nv/', views.tim_nv, name='tim_nv'),
-
+    path('dang_nhap/', views.dang_nhap, name='dang_nhap'),  
+    path('dang_xuat/', views.dang_xuat, name='dang_xuat'), 
 
 ]

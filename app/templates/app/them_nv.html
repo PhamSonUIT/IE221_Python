@@ -1,3 +1,4 @@
+{%extends 'app/base.html'%}
 {% load static %}
 <!DOCTYPE html>
 <html lang="en">
@@ -22,11 +23,7 @@
     </script>
   </head>
   <body>
-    <nav class="menu">
-      <a href="{% url 'them_nv' %}"> Thêm Nhân Viên </a>
-      <a href="{% url 'hien_thi_nv' %}"> Xem Danh Sách Nhân Viên </a>
-      <a href="{% url 'tim_nv' %}"> Tìm Nhân Viên </a>
-    </nav>
+    {%block content%}
     <header>
       <h1>Thêm Nhân Viên</h1>
     </header>
@@ -70,5 +67,7 @@
         <input type="submit" value="Thêm" />
       </form>
     </main>
+    {%endblock%}
+    
   </body>
 </html>
