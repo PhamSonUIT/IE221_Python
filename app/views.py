@@ -19,7 +19,7 @@ def hien_thi_nv(request):
     ds_nv = NhanVien.objects.all()
     return render(request, 'app/hien_thi_nv.html', {'ds_nv':ds_nv})
 
-@login_required
+
 def tim_nv(request):
     ma_nv = request.GET.get('ma_nv', '')
     error = None
